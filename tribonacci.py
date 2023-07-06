@@ -9,13 +9,12 @@ class Solution:
         #Pseudocode:
         
         a, b, c = 0, 1, 1
-        if n == 0:
-            return a
+        array = [0, 1, 1]
 
-        for _ in range(3, n + 1):
-            a, b, c = b, c, c + b + a 
+        for i in range(3, n+1):
+            array.append(array[i-1] + array[i-2] + array[i-3])
         
-        return c
+        return array[n]
 
 print('/nT_3: ')
 print(Solution.tribonacci(Solution, 3))
@@ -23,5 +22,5 @@ print('/nT_4: ')
 print(Solution.tribonacci(Solution, 4))
 print('/nT_2: ')
 print(Solution.tribonacci(Solution, 2))
-print('/nT_37: ')
-print(Solution.tribonacci(Solution, 37))
+print('/nT_25: ')
+print(Solution.tribonacci(Solution, 25))

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,14 +24,17 @@ Pseudocode:
             Recursively look for zeros, move to the end
 
 */
+private:
+    static bool IsZero(int n) {
+        return (n==0);
+    }
 
 public:
     static void moveZeroes(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i++) {
-            if (nums[i] == 0) {
-                nums.erase(nums.begin() + i);
-            }
-        }    
+        int origlen = nums.size();
+        nums.erase(remove_if(nums.begin(), nums.end(), [](const int& x) {return x==0;}), nums.end());
+        vector<int> zeros(origlen - nums.size(), 0);
+        nums.insert(nums.end(), zeros.begin(), zeros.end());
     }
 };
 
